@@ -16,6 +16,15 @@ async function main() {
   console.log('Resta:', resta);
   console.log('Multiplicación:', mult);
   console.log('División:', div);
+  const multiplicación = num1 * num2;
+  const division = num1 / num2;
+  // TODO: Implementar la resta, multiplicación y división
+
+  console.log('Suma:', suma);
+  console.log('resta:', resta);
+  console.log('Multiplicación:', multiplicación);
+  console.log('División:', division);
+
   // TODO: Mostrar el resultado de la resta, multiplicación y división
 
 }

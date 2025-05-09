@@ -34,4 +34,5 @@ async function main() {
       console.log("El número no es divisible entre 3 ni entre 5");
   }
 }
+
 main();

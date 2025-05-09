@@ -13,6 +13,7 @@ async function main() {
     console.log('Eres un adulto masculino');
   } else {
     console.log('No se encuentran coincidencias');
+
   }
 }
 
