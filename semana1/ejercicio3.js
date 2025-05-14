@@ -33,6 +33,14 @@ async function main() {
     default:
       console.log("El número no es divisible entre 3 ni entre 5");
   }
+
+  n % 3 === 0 && n % 5 === 0
+    ? "Múltiplo de 3 y 5"
+    : n % 3 === 0
+    ? "Múltiplo de 3"
+    : n % 5 === 0
+    ? "Múltiplo de 5"
+    : "No es múltiplo de 3 ni de 5";
 }
 
 main();
