@@ -1,7 +1,10 @@
+
 const { ask } = require("../helpers/input");
+
 
 async function main() {
   const nombres = ["Ana", "Roberto", "Luis", "Mariana", "Sol"];
+
 
   for (let i = 0; i < nombres.length; i++) {
     if (nombres[i].length >= 5) {
@@ -40,3 +43,4 @@ console.log(`La palabra al revés es: ${resultado}`);
 }
 
 main();
+
