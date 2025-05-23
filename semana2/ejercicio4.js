@@ -50,7 +50,6 @@ function nombresConVocal(nombres) {
     }
   }
   return resultado;
->>>>>>> upstream/main
 }
 
 async function main() {
@@ -72,4 +71,3 @@ async function main() {
 }
 
 main();
->>>>>>> upstream/main
