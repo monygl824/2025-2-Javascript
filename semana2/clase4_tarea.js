@@ -13,47 +13,65 @@
 //
 //La calificación más alta y la más baja
 
-const { ask } = require("../helpers/input");
+function obtenerPromedio(numeros) {
+  let total = 0;
+  for (let i = 0; i < numeros.length; i++) {
+    total = total + numeros[i];
+  }
+  const promedio = total / numeros.length;
 
-async function main() {
-    const calificaciones = [];
-    let continuar = true;
-
-    while (continuar) {
-        const calificacion = Number(await ask("Ingresa una calificación (0-100): "));
-        if (calificacion >= 0 && calificacion <= 100) {
-            calificaciones.push(calificacion);
-        } else {
-            console.log("Calificación inválida. Debe estar entre 0 y 100.");
-        }
-        continuar = await ask("¿Quieres ingresar otra calificación? (s/n): ") === "s";
-    }
-
-    const resultado = analizarCalificaciones(calificaciones);
-    console.log(resultado);
+  return promedio;
 }
 
-function analizarCalificaciones(numeros){
-    let aprobados=0;
-    let reprobados=0;
-    let promedio=0;
-    let califAlta=0;
-    let califBaja=0;
-
-    for (let i=0;i<numeros.length;i++){
-        if (numeros[i]>=70){
-            aprobados++;
-        }else{
-            reprobados++;
-        }
-        promedio+=numeros[i];
-        if (califAlta<numeros[i]){
-            califAlta=numeros[i];
-        }
-        if (califBaja>numeros[i] || califBaja===0){
-            califBaja=numeros[i];
-        }
+function obtenerMayor(numeros) {
+  let mayor = numeros[0];
+  for (let i = 0; i < numeros.length; i++) {
+    if (numeros[i] > mayor) {
+      mayor = numeros[i];
     }
+  }
+  return mayor;
+}
+
+function obtenerMenor(numeros) {
+  let menor = numeros[0];
+  for (let i = 0; i < numeros.length; i++) {
+    if (numeros[i] < menor) {
+      menor = numeros[i];
+    }
+  }
+  return menor;
+}
+
+function obtenerAprobados(numeros) {
+  let aprobados = 0;
+  let reprobados = 0;
+  for (let i = 0; i < numeros.length; i++) {
+    if (numeros[i] >= 70) {
+      aprobados++;
+    } else {
+      reprobados++;
+    }
+  }
+  return { aprobados, reprobados };
+}
+
+function analizarCalificaciones(calificaciones) {
+  const res = obtenerAprobados(calificaciones);
+  let aprobados = res.aprobados;
+  let reprobados = res.reprobados;
+  let promedio = obtenerPromedio(calificaciones);
+  let califAlta = obtenerMayor(calificaciones);
+  let califBaja = obtenerMenor(calificaciones);
+
+  return { aprobados, reprobados, promedio, califAlta, califBaja };
+}
+
+async function main() {
+  const calificaciones = [90, 89, 34, 45, 67, 89, 23, 12, 45, 89, 8, 90]
+  const resultado = analizarCalificaciones(calificaciones);
+  console.log(resultado);
+
 }
 
 main();
